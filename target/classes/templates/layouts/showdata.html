@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Show data</title>
+    <headers>
+        <frame-options
+                policy="SAMEORIGIN" />
+    </headers>
+
+    <script>
+
+      function submitCurrencyTo() {
+
+        console.log("value");
+
+      }
+
+    </script>
+</head>
+<body>
+
+<th:block layout:fragment="content">
+
+<button type="button" th:onclick="|window.location.href='/result'|" class="btn btn-large btn-success" method="post"> Get data from BNB</button>
+
+<form action="#" th:onclick="|window.location.href='/convertXMLtoDB'|" method="post" >
+    <button type="button" class="btn btn-large btn-success" > import data to DB</button>
+</form>
+
+
+
+<br>
+
+<embed src="/downloads/Exchange_Rates.pdf" width="600px" height="900px" />
+
+</th:block>
+
+</body>
+</html>

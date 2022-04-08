@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<!-- Insert content into the layouts/layout.html -->
+<th:block layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<li><a href="#" th:href="@{/security/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+<li><a href="#" th:href="@{/security/logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+<h1>Logged user: <span sec:authentication="name" /></h1>
+
+<div sec:authorize="hasRole('USER')">Text visible to user.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="isAuthenticated()">Text visible only to
+    authenticated users.</div>
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user roles:
+<div sec:authentication="principal.authorities"></div>
+
+</body>
+
+</th:block>
+</html>

@@ -1,0 +1,14 @@
+project\thymeleaf\ThymeleafTextTemplates$ThymeleafConfig.class
+project\thymeleaf\ThymeleafTextTemplates.class
+project\ServletInitializer.class
+project\thymeleaf\ThymeleafObjects.class
+project\home\HomeController.class
+project\thymeleaf\ThymeleafObjects$UrlService.class
+project\Application.class
+project\home\MvcConfig.class
+project\security\WebSecurityConfig$1.class
+project\home\ViewInformationObject.class
+project\thymeleaf\ThymeleafObjects$MyConfiguration.class
+project\security\WebSecurityConfig.class
+project\security\CustomAccessDeniedHandler.class
+project\thymeleaf\ThymeleafTextTemplates$Form.class
