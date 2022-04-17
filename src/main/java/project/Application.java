@@ -21,40 +21,19 @@ public class Application {
         SpringApplication.run(Application.class);
     }
 
-    public static void downloadInitializer() throws MalformedURLException, IOException{
-        String sourceUrl = "https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?download=pdf&search=&lang=BG";
-        String targetFilename = "src\\main\\resources\\downloads\\Exchange_Rates.pdf";
 
-        File f = new File(targetFilename);
-        if(!f.exists() && !f.isDirectory()) {
-            long bytesDownloaded = download(sourceUrl, targetFilename);
 
-        String message = String.format("Downloaded %d bytes from %s to %s.", bytesDownloaded, sourceUrl, targetFilename);
-        System.out.println(message);
-        }
 
-    }
 
-    public static void downloadInitializerForXML() throws MalformedURLException, IOException{
-        String sourceUrl = "https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?download=xml&search=&lang=EN";
-        String targetFilename = "src\\main\\resources\\downloads\\Exchange_Rates.xml";
 
-        File f = new File(targetFilename);
-        if(!f.exists() && !f.isDirectory()) {
-            long bytesDownloaded = download(sourceUrl, targetFilename);
 
-            String message = String.format("Downloaded %d bytes from %s to %s.", bytesDownloaded, sourceUrl, targetFilename);
-            System.out.println(message);
-        }
+    
 
-    }
 
-    // package scope to allow test class to access
-    static long download(String sourceUrl, String targetFileName) throws MalformedURLException, IOException {
-        try (InputStream in = URI.create(sourceUrl).toURL().openStream()) {
-            return Files.copy(in, Paths.get(targetFileName));
-        }
-    }
+
+
+
+
 
     public static void createDB() throws ClassNotFoundException {
         executeSqlStatementWithNoReturn("DROP TABLE IF EXISTS currency");

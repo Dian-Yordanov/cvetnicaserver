@@ -274,7 +274,7 @@ class HomeController {
     String doStuffMethod(Model model) throws ClassNotFoundException, IOException {
         System.out.println("Success");
 
-        Application.downloadInitializer();
+//        Application.downloadInitializer();
 
         return "layouts/showdata";
     }
@@ -283,7 +283,7 @@ class HomeController {
     String convertXMLtoDB(Model model) throws ClassNotFoundException, IOException {
 //        System.out.println("Succggess");
 
-        Application.downloadInitializerForXML();
+//        Application.downloadInitializerForXML();
 
         String filePath = "src\\main\\resources\\downloads\\";
 //        String fileName = "XMLFile.xml";
