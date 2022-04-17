@@ -19,6 +19,7 @@
         </pluginRepository>
     </pluginRepositories>
 
+
     <!-- Inherit defaults from Spring Boot -->
     <!-- With this starter it is easier to override versions of libraries -->
 
@@ -137,6 +138,13 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.25.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Test -->

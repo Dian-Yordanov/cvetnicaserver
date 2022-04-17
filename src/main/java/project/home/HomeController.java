@@ -1,11 +1,7 @@
 package project.home;
 
-import io.micrometer.core.instrument.util.StringEscapeUtils;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,33 +17,20 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import project.Application;
+
+import project.databases.DatabaseRelatedMethods;
+import project.model.ViewInformationObject;
 
 import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import java.time.LocalDateTime;
 
@@ -56,9 +39,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
-
-import static java.time.chrono.ThaiBuddhistEra.BE;
 
 @Controller
 class HomeController {
@@ -301,8 +281,9 @@ class HomeController {
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
             NodeList nodeList = doc.getElementsByTagName("ROW");
 
+            DatabaseRelatedMethods methods = new DatabaseRelatedMethods();
 
-            Application.createDB();
+            methods.createDB();
 
             for (int itr = 0; itr < nodeList.getLength(); itr++)
             {
@@ -316,7 +297,7 @@ class HomeController {
 //                        System.out.println("NAME_: " + eElement.getElementsByTagName("NAME_").item(0).getTextContent());
 //                        System.out.println("RATE: " + eElement.getElementsByTagName("RATE").item(0).getTextContent());
 
-                        Application.writeIntoDB(eElement.getElementsByTagName("NAME_").item(0).getTextContent(),
+                        methods.writeIntoDB(eElement.getElementsByTagName("NAME_").item(0).getTextContent(),
                                 eElement.getElementsByTagName("RATE").item(0).getTextContent());
 
                     }
