@@ -59,72 +59,72 @@
 <!-- Insert content into the layouts/layout.html -->
 <th:block layout:fragment="content">
 
-    <div class="grid-container">
-        <div class="grid-item">
+<!--    <div class="grid-container">-->
+<!--        <div class="grid-item">-->
 
-            <h4>Choose a currency</h4>
+<!--            <h4>Choose a currency</h4>-->
 
-        </div>
-        <div class="grid-item">
+<!--        </div>-->
+<!--        <div class="grid-item">-->
 
-            <h4 id="currencyField0">Current value of currencies compared to 1 lev</h4>
-        </div>
-        <div class="grid-item">
+<!--            <h4 id="currencyField0">Current value of currencies compared to 1 lev</h4>-->
+<!--        </div>-->
+<!--        <div class="grid-item">-->
 
-            <form name="myForm" action="#" th:action="@{/}" th:object="${input}" method="post" onsubmit="return validateForm()">
-                <label for="currencyFrom"><span class="currencyText">  From:           </span></label>
-                <select name="currencyFrom" id="currencyFrom" th:field="*{content}" onchange='changeCurrencyFrom(this)' method="post">
-                    <option value="Dollar">Dollar</option>
-                    <option value="Pound sterling">Pound sterling</option>
-                    <option value="Euro">Euro</option>
-                    <option value="Japanese Yen">Japanese Yen</option>
-                </select>
-                <br>
-                <label for="currencyTo"><span class="currencyText">  To:                </span></label>
-                <select name="currencyTo" id="currencyTo" th:field="*{content}" onchange='changeCurrencyTo(this)' method="post">
-                    <option value="Dollar">Dollar</option>
-                    <option value="Pound sterling">Pound sterling</option>
-                    <option value="Euro">Euro</option>
-                    <option value="Japanese Yen">Japanese Yen</option>
-                </select>
-                <br>
-                <label for="label"><span class="currencyText">  Sum:             </span></label>
-                <input type="text" th:field="*{id}" name="labelName" id="labelName" size="10" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-                <p><input type="submit" value="Submit" onsubmit="return validateForm()" method="post"/> <input type="reset" value="Reset" /></p>
-            </form>
+<!--            <form name="myForm" action="#" th:action="@{/}" th:object="${input}" method="post" onsubmit="return validateForm()">-->
+<!--                <label for="currencyFrom"><span class="currencyText">  From:           </span></label>-->
+<!--                <select name="currencyFrom" id="currencyFrom" th:field="*{content}" onchange='changeCurrencyFrom(this)' method="post">-->
+<!--                    <option value="Dollar">Dollar</option>-->
+<!--                    <option value="Pound sterling">Pound sterling</option>-->
+<!--                    <option value="Euro">Euro</option>-->
+<!--                    <option value="Japanese Yen">Japanese Yen</option>-->
+<!--                </select>-->
+<!--                <br>-->
+<!--                <label for="currencyTo"><span class="currencyText">  To:                </span></label>-->
+<!--                <select name="currencyTo" id="currencyTo" th:field="*{content}" onchange='changeCurrencyTo(this)' method="post">-->
+<!--                    <option value="Dollar">Dollar</option>-->
+<!--                    <option value="Pound sterling">Pound sterling</option>-->
+<!--                    <option value="Euro">Euro</option>-->
+<!--                    <option value="Japanese Yen">Japanese Yen</option>-->
+<!--                </select>-->
+<!--                <br>-->
+<!--                <label for="label"><span class="currencyText">  Sum:             </span></label>-->
+<!--                <input type="text" th:field="*{id}" name="labelName" id="labelName" size="10" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />-->
+<!--                <p><input type="submit" value="Submit" onsubmit="return validateForm()" method="post"/> <input type="reset" value="Reset" /></p>-->
+<!--            </form>-->
 
-            <span role="alert" id="nameError" aria-hidden="true"> Please only enter numeric characters (Allowed input:0-9) </span>
+<!--            <span role="alert" id="nameError" aria-hidden="true"> Please only enter numeric characters (Allowed input:0-9) </span>-->
 
-        </div>
-        <div class="grid-item">
+<!--        </div>-->
+<!--        <div class="grid-item">-->
 
-            <strong id="currencyField1" th:text="${currencyFromValue}">cc</strong>
-            <br>
-            <strong id="currencyField2" th:text="${currencyToValue}">cc</strong>
+<!--            <strong id="currencyField1" th:text="${currencyFromValue}">cc</strong>-->
+<!--            <br>-->
+<!--            <strong id="currencyField2" th:text="${currencyToValue}">cc</strong>-->
 
-        </div>
-    </div>
-
-
-    <h4>Result:</h4>
-    <strong th:text="${result}">cc</strong>
-
-    <hr>
-
-    <strong hidden th:text="${currencyNameDollar}">cc</strong>
-    <strong hidden id="Dollar" th:text="${valueDollar}">cc</strong>
-    <strong hidden th:text="${currencyNameEuro}">cc</strong>
-    <strong hidden id="Euro" th:text="${valueEuro}">cc</strong>
-    <strong hidden th:text="${currencyNamePoundsterling}">cc</strong>
-    <strong hidden id="Pound sterling" th:text="${valuePoundsterling}">cc</strong>
-    <strong hidden th:text="${currencyNameJapaneseYen}">cc</strong>
-    <strong hidden id="Japanese Yen" th:text="${valueJapaneseYen}">cc</strong>
+<!--        </div>-->
+<!--    </div>-->
 
 
-    <body onload='resetCurrenciesTo();resetCurrenciesFrom();'>
+<!--    <h4>Result:</h4>-->
+<!--    <strong th:text="${result}">cc</strong>-->
+
+<!--    <hr>-->
+
+<!--    <strong hidden th:text="${currencyNameDollar}">cc</strong>-->
+<!--    <strong hidden id="Dollar" th:text="${valueDollar}">cc</strong>-->
+<!--    <strong hidden th:text="${currencyNameEuro}">cc</strong>-->
+<!--    <strong hidden id="Euro" th:text="${valueEuro}">cc</strong>-->
+<!--    <strong hidden th:text="${currencyNamePoundsterling}">cc</strong>-->
+<!--    <strong hidden id="Pound sterling" th:text="${valuePoundsterling}">cc</strong>-->
+<!--    <strong hidden th:text="${currencyNameJapaneseYen}">cc</strong>-->
+<!--    <strong hidden id="Japanese Yen" th:text="${valueJapaneseYen}">cc</strong>-->
 
 
-    <!--    <h4>Resuddlt:</h4>-->
+<!--    <body onload='resetCurrenciesTo();resetCurrenciesFrom();'>-->
+
+
+<!--    &lt;!&ndash;    <h4>Resuddlt:</h4>&ndash;&gt;-->
 
 </th:block>
 

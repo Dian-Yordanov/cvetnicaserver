@@ -14,6 +14,10 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
 /**
  * Using text templates with Thymeleaf.
  * <p>
@@ -72,34 +76,14 @@ public class ThymeleafTextTemplates {
         }
     }
 
+    @Getter
+    @Setter
     public static class Form {
-        private String name = "spring.io";
-        private String url = "http://spring.io";
-        private String tags = "#spring #framework #java";
 
-        public String getName() {
-            return name;
-        }
+        private String name;
+        private String url;
+        private String tags;
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public String getTags() {
-            return tags;
-        }
-
-        public void setTags(String tags) {
-            this.tags = tags;
-        }
     }
 
 }

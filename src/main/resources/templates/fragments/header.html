@@ -14,8 +14,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#" th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#" th:href="@{/change-currency-rates}"><span class="glyphicon glyphicon-euro"></span> Change currency rates (admin only)</a></li>
-                <li><a href="#" th:href="@{/showdata}"><span class="glyphicon glyphicon-gbp"></span> Show currency rates</a></li>
+                <li><a href="#" th:href="@{/table}"><span class="glyphicon glyphicon-gbp"></span> Table</a></li>
+
+<!--                <li><a href="#" th:href="@{/change-currency-rates}"><span class="glyphicon glyphicon-euro"></span> Change currency rates (admin only)</a></li>-->
+<!--                <li><a href="#" th:href="@{/showdata}"><span class="glyphicon glyphicon-gbp"></span> Show currency rates</a></li>-->
                 <li><a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a></li>
             </ul>
         </div>
