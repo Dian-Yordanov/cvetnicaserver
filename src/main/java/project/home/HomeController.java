@@ -46,7 +46,7 @@ class HomeController {
     @RequestMapping("/")
     public String index( @ModelAttribute ViewInformationObject viewInformationObject, Model model ) throws ClassNotFoundException {
 
-        return "index2";
+        return "pages/index";
     }
 
     @PostMapping("/")
@@ -58,16 +58,16 @@ class HomeController {
 //        model.addAttribute("currencyToValue", doubleValueTo);
 //        model.addAttribute("result", calculationResult);
 
-        return "index2";
+        return "pages/index";
     }
 
-    @GetMapping("/currencyDataInputURL")
+    @GetMapping("/table")
     public String indexInput(@ModelAttribute ViewInformationObject viewInformationObject, Model model){
 
 //        System.out.println(viewInformationObject.getId());
 //        System.out.println(viewInformationObject.getContent());
 
-        return "layouts/currencyDataInputURL";
+        return "pages/table";
     }
 
     @RequestMapping(value = "/result")

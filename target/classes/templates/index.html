@@ -5,54 +5,6 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <script>
-     function changeCurrencyFrom(selectObject) {
-        var value = selectObject.value;
-        console.log(value);
-        var x = document.getElementById(value).innerHTML;
-        console.log(x);
-        document.getElementById("currencyField1").innerHTML = x;
-        document.getElementById("currencyField1").hidden = false;
-    }
-     function changeCurrencyTo(selectObject) {
-        var value = selectObject.value;
-        console.log(value);
-        var x = document.getElementById(value).innerHTML;
-        console.log(x);
-        document.getElementById("currencyField2").innerHTML = x;
-        document.getElementById("currencyField2").hidden = false;
-    }
-    function resetCurrenciesTo() {
-        var value = 'Dollar';
-        var x = document.getElementById(value).innerHTML;
-        console.log(x);
-        document.getElementById("currencyField1").innerHTML = x;
-        document.getElementById("currencyField1").hidden = false;
-    }
-        function resetCurrenciesFrom() {
-        var value = 'Dollar';
-        var x = document.getElementById(value).innerHTML;
-        console.log(x);
-        document.getElementById("currencyField2").innerHTML = x;
-        document.getElementById("currencyField2").hidden = false;
-    }
-    function validateForm() {
-      console.log("x");
-      let x = document.getElementById("labelName").value;
-      console.log("x" + x );
-
-      if(x == ""){
-
-        const nameError = document.getElementById("nameError");
-        nameError.classList.add("visible");
-        labelName.classList.add("invalid");
-        nameError.setAttribute('aria-hidden', false);
-        nameError.setAttribute('aria-invalid', true);
-
-        return false;
-      }
-
-    }
-
 
 </script>
 </head>
