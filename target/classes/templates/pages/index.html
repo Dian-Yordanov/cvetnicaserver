@@ -6,6 +6,54 @@
 <head>
 <script>
 
+<!-- function changeCurrencyFrom(selectObject) {-->
+<!--        var value = selectObject.value;-->
+<!--        console.log(value);-->
+<!--        var x = document.getElementById(value).innerHTML;-->
+<!--        console.log(x);-->
+<!--        document.getElementById("currencyField1").innerHTML = x;-->
+<!--        document.getElementById("currencyField1").hidden = false;-->
+<!--    }-->
+<!--     function changeCurrencyTo(selectObject) {-->
+<!--        var value = selectObject.value;-->
+<!--        console.log(value);-->
+<!--        var x = document.getElementById(value).innerHTML;-->
+<!--        console.log(x);-->
+<!--        document.getElementById("currencyField2").innerHTML = x;-->
+<!--        document.getElementById("currencyField2").hidden = false;-->
+<!--    }-->
+<!--    function resetCurrenciesTo() {-->
+<!--        var value = 'Dollar';-->
+<!--        var x = document.getElementById(value).innerHTML;-->
+<!--        console.log(x);-->
+<!--        document.getElementById("currencyField1").innerHTML = x;-->
+<!--        document.getElementById("currencyField1").hidden = false;-->
+<!--    }-->
+<!--        function resetCurrenciesFrom() {-->
+<!--        var value = 'Dollar';-->
+<!--        var x = document.getElementById(value).innerHTML;-->
+<!--        console.log(x);-->
+<!--        document.getElementById("currencyField2").innerHTML = x;-->
+<!--        document.getElementById("currencyField2").hidden = false;-->
+<!--    }-->
+<!--    function validateForm() {-->
+<!--      console.log("x");-->
+<!--      let x = document.getElementById("labelName").value;-->
+<!--      console.log("x" + x );-->
+
+<!--      if(x == ""){-->
+
+<!--        const nameError = document.getElementById("nameError");-->
+<!--        nameError.classList.add("visible");-->
+<!--        labelName.classList.add("invalid");-->
+<!--        nameError.setAttribute('aria-hidden', false);-->
+<!--        nameError.setAttribute('aria-invalid', true);-->
+
+<!--        return false;-->
+<!--      }-->
+
+<!--    }-->
+
 </script>
 </head>
 <!-- Insert content into the layouts/layout.html -->
@@ -21,11 +69,11 @@
 
             <h4 id="currencyField0">Current value of currencies compared to 1 lev</h4>
         </div>
-<!--        <div class="grid-item">-->
+        <div class="grid-item">
 
 <!--            <form name="myForm" action="#" th:action="@{/}" th:object="${input}" method="post" onsubmit="return validateForm()">-->
 <!--                <label for="currencyFrom"><span class="currencyText">  From:           </span></label>-->
-<!--                <select name="currencyFrom" id="currencyFrom" th:field="*{content}" onchange='changeCurrencyFrom(this)' method="post">-->
+<!--                <select name="currencyFrom" id="currencyFrom" onchange='changeCurrencyFrom(this)' method="post">-->
 <!--                    <option value="Dollar">Dollar</option>-->
 <!--                    <option value="Pound sterling">Pound sterling</option>-->
 <!--                    <option value="Euro">Euro</option>-->
@@ -33,7 +81,7 @@
 <!--                </select>-->
 <!--                <br>-->
 <!--                <label for="currencyTo"><span class="currencyText">  To:                </span></label>-->
-<!--                <select name="currencyTo" id="currencyTo" th:field="*{content}" onchange='changeCurrencyTo(this)' method="post">-->
+<!--                <select name="currencyTo" id="currencyTo" th:object="${input}" onchange='changeCurrencyTo(this)' method="post">-->
 <!--                    <option value="Dollar">Dollar</option>-->
 <!--                    <option value="Pound sterling">Pound sterling</option>-->
 <!--                    <option value="Euro">Euro</option>-->
@@ -41,20 +89,30 @@
 <!--                </select>-->
 <!--                <br>-->
 <!--                <label for="label"><span class="currencyText">  Sum:             </span></label>-->
-<!--                <input type="text" th:field="*{id}" name="labelName" id="labelName" size="10" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />-->
-<!--                <p><input type="submit" value="Submit" onsubmit="return validateForm()" method="post"/> <input type="reset" value="Reset" /></p>-->
+<!--&lt;!&ndash;                <input type="text" th:field="*{id}" name="labelName" id="labelName" size="10" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />&ndash;&gt;-->
+<!--                <p>-->
+<!--                    <input type="submit" value="Submit" onsubmit="return validateForm()" method="post"/> <input type="reset" value="Reset" />-->
+<!--                </p>-->
 <!--            </form>-->
 
 <!--            <span role="alert" id="nameError" aria-hidden="true"> Please only enter numeric characters (Allowed input:0-9) </span>-->
 
-<!--        </div>-->
-<!--        <div class="grid-item">-->
+        </div>
+        <div class="grid-item">
 
-<!--            <strong id="currencyField1" th:text="${currencyFromValue}">cc</strong>-->
-<!--            <br>-->
-<!--            <strong id="currencyField2" th:text="${currencyToValue}">cc</strong>-->
+            <strong id="currencyField1" th:text="${currencyFromValue}">cc</strong>
+            <br>
+            <strong id="currencyField2" th:text="${currencyToValue}">cc</strong>
 
-<!--        </div>-->
+        </div>
+
+        <div class="grid-item">
+            <form th:action="@{/}" th:object="${viewInformationObject}" method="post">
+                <input type="text" th:field="*{id}" id="datePlanted" name="datePlanted" />
+                <button type="submit">Add</button>
+            </form>
+        </div>
+
     </div>
 
 

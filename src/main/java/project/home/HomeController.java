@@ -46,17 +46,32 @@ class HomeController {
     @RequestMapping("/")
     public String index( @ModelAttribute ViewInformationObject viewInformationObject, Model model ) throws ClassNotFoundException {
 
+//        model.addAttribute("someBean", viewInformationObject); //assume SomeBean has a property called datePlanted
+
+
+        model.addAttribute("currencyFromValue", viewInformationObject.getId());
+
         return "pages/index";
     }
 
     @PostMapping("/")
-    public String indexInputSubmit(@ModelAttribute ViewInformationObject viewInformationObject, Model model) throws ClassNotFoundException {
+    public String indexInputSubmit(@ModelAttribute("viewInformationObject") ViewInformationObject viewInformationObject, Model model) throws ClassNotFoundException {
 
+//        model.addAttribute("currencyDataInputURL", new ViewInformationObject());
 
+        System.out.println("Date planted: " + viewInformationObject.getId()); //in reality, you'd use a logger instead :)
+        System.out.println("Date planted: " + viewInformationObject.getContent()); //in reality, you'd use a logger instead :)
+
+        model.addAttribute("currencyFromValue", viewInformationObject.getId());
+        model.addAttribute("currencyToValue", viewInformationObject.getId());
+
+//        System.out.println("getId()" + viewInformationObject.getId());
+//        System.out.println("getContent() " + viewInformationObject.getContent());
+//
 //        model.addAttribute("input", new ViewInformationObject());
-//        model.addAttribute("currencyFromValue", doubleValueFrom);
-//        model.addAttribute("currencyToValue", doubleValueTo);
-//        model.addAttribute("result", calculationResult);
+//        model.addAttribute("currencyFromValue", 1);
+//        model.addAttribute("currencyToValue", 1);
+//        model.addAttribute("result", 1);
 
         return "pages/index";
     }
