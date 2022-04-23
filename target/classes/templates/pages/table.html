@@ -3,15 +3,15 @@
       layout:decorate="~{layouts/layout}"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+  <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+  <script src="https://jsuites.net/v4/jsuites.js"></script>
+  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
 </head>
 
 <th:block layout:fragment="content">
 
   <body>
-  <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
-  <script src="https://jsuites.net/v4/jsuites.js"></script>
-  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
-  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
 
   <div id="spreadsheet" tabindex="1" class="jexcel_container">    </div>
 
@@ -19,12 +19,17 @@
 
   <script>
 
+    var changed = function(instance, cell, x, y, value) {
+        var cellName = jexcel.getColumnNameFromId([x,y]);
+        alert(data);
+    }
+
     var data = [
         ['Jazz', 'Honda', '2019-02-12', '', true, '$ 2.000,00', '#777700'],
         ['Civic', 'Honda', '2018-07-11', '', true, '$ 4.000,01', '#007777'],
     ];
 
-    jspreadsheet(document.getElementById('spreadsheet'), {
+    var table1 = jspreadsheet(document.getElementById('spreadsheet'), {
         data: data,
         columns: [
             { type: 'text', title: 'Car', width: 120 },
@@ -34,8 +39,15 @@
             { type: 'checkbox', title: 'Stock', width: 80 },
             { type: 'numeric', title: 'Price', width: 100, mask: '$ #.##,00', decimal: ',' },
             { type: 'color', width: 100, render: 'square', }
-        ]
+        ],
+         onchange: changed,
     });
+
+<!--    $(document).ready(function(){-->
+<!--    table1.onchange(function(){-->
+<!--         alert(data);-->
+<!--      });-->
+<!--    });-->
 
   </script>
 
