@@ -1,5 +1,7 @@
 project\thymeleaf\ThymeleafTextTemplates$ThymeleafConfig.class
 project\model\ViewInformationObject.class
+project\security\WebSecurityConfig.class
+project\thymeleaf\ThymeleafTextTemplates$Form.class
 project\thymeleaf\ThymeleafTextTemplates.class
 project\thymeleaf\ThymeleafObjects.class
 project\home\HomeController.class
@@ -8,7 +10,5 @@ project\Application.class
 project\home\MvcConfig.class
 project\security\WebSecurityConfig$1.class
 project\thymeleaf\ThymeleafObjects$MyConfiguration.class
-project\security\WebSecurityConfig.class
 project\databases\DatabaseRelatedMethods.class
 project\security\CustomAccessDeniedHandler.class
-project\thymeleaf\ThymeleafTextTemplates$Form.class

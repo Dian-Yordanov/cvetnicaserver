@@ -4,6 +4,11 @@
 <head>
 <script>
 
+$(document).ready(function(){
+    $(this).find('input').change(function(){
+         this.form.submit();
+    });
+});
 
 </script>
 </head>

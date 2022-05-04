@@ -1,64 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      layout:decorate="~{layouts/layout}">
 <head>
 <script>
 
-$(document).ready(function(){
-    $(this).find('input').change(function(){
-         this.form.submit();
-    });
-});
 
 </script>
 </head>
 <!-- Insert content into the layouts/layout.html -->
 <th:block layout:fragment="content">
-
     <div class="grid-container">
         <div class="grid-item">
-
             <h4>Choose a currency</h4>
-
         </div>
         <div class="grid-item">
-
             <h4 id="currencyField0">Current value of currencies compared to 1 lev</h4>
         </div>
         <div class="grid-item">
-
-        </div>
-        <div class="grid-item">
-
             <strong id="currencyField1" th:text="${currencyFromValue}">cc</strong>
             <br>
             <strong id="currencyField2" th:text="${currencyToValue}">cc</strong>
-
         </div>
-
         <div class="grid-item">
             <form th:action="@{/}" th:object="${viewInformationObject}" method="post">
                 <input type="text" th:field="*{id}" id="datePlanted" name="datePlanted" />
                 <button type="submit">Add</button>
             </form>
         </div>
-
     </div>
-
-<!--    <form name="loginBox" target="#here" method="post">-->
-<!--        <input name="username" type="text" /><br />-->
-<!--        <input name="password" type="password" />-->
-<!--        <input type="submit" />-->
-<!--    </form>-->
-
-    <h4>Result:</h4>
+    <h4>RRRRRRRRRRResult:</h4>
     <strong th:text="${result}">cc</strong>
-
-    <hr>
-
-
+    <h1>dsadasd</h1>
+    <h4>Result:</h4>
 </th:block>
 
 </html>

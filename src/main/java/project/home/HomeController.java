@@ -85,16 +85,16 @@ class HomeController {
         return "pages/table";
     }
 
-    @RequestMapping(value = "/result")
-    String doStuffMethod(Model model) throws ClassNotFoundException, IOException {
+    @RequestMapping(value = "/tabulator")
+    String tabulator(Model model) throws ClassNotFoundException, IOException {
 
-        return "layouts/showdata";
+        return "pages/tabulator";
     }
 
-    @RequestMapping(value = "/convertXMLtoDB")
-    String convertXMLtoDB(Model model) throws ClassNotFoundException, IOException {
+    @RequestMapping(value = "/xspreadsheet")
+    String xspreadsheet(Model model) throws ClassNotFoundException, IOException {
 
-        return "redirect:/showdata";
+        return "pages/xspreadsheet";
     }
 
     @GetMapping("/security/user_page")

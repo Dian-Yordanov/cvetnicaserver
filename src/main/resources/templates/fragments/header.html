@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="/webjars/bootstrap/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+        <link href="../../static/css/core.css"
+              th:href="@{/css/core.css}"
+              rel="stylesheet" media="screen" />
+        <script src="/webjars/jquery/jquery.min.js"
+                th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</head>
 <body>
 <!-- Navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#" th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#" th:href="@{/table}"><span class="glyphicon glyphicon-gbp"></span> Table</a></li>
+                <li><a href="#" th:href="@{/table}"><span class="glyphicon glyphicon-th"></span> table</a></li>
+                <li><a href="#" th:href="@{/tabulator}"><span class="glyphicon glyphicon-th"></span> tabulator</a></li>
+                <li><a href="#" th:href="@{/xspreadsheet}"><span class="glyphicon glyphicon-th"></span> xspreadsheet</a></li>
 
 <!--                <li><a href="#" th:href="@{/change-currency-rates}"><span class="glyphicon glyphicon-euro"></span> Change currency rates (admin only)</a></li>-->
 <!--                <li><a href="#" th:href="@{/showdata}"><span class="glyphicon glyphicon-gbp"></span> Show currency rates</a></li>-->
@@ -24,5 +30,7 @@
         <!--/.nav-collapse -->
     </div>
 </div>
+<!-- Compiled and minified JavaScript -->
+
 </body>
 </html>
