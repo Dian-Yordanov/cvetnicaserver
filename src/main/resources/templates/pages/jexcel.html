@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+  <script src="https://jsuites.net/v4/jsuites.js"></script>
+  <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css">
+  <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css">
+</head>
+
+<th:block layout:fragment="content">
+
+  <body>
+
+  <div id="spreadsheet" tabindex="1" class="jexcel_container">    </div>
+
+  </body>
+
+  <script>
+
+    var changed = function(instance, cell, x, y, value) {
+        var cellName = jexcel.getColumnNameFromId([x,y]);
+        alert(data);
+    }
+
+    var data = [
+        [''],
+        [''],
+    ];
+
+    var table1 = jspreadsheet(document.getElementById('spreadsheet'), {
+        data: data,
+        columns: [
+            { type: 'text', title: 'A', width: 120 },
+            { type: 'text', title: 'B', width: 120 }
+        ],
+         onchange: changed,
+    });
+
+<!--    $(document).ready(function(){-->
+<!--    table1.onchange(function(){-->
+<!--         alert(data);-->
+<!--      });-->
+<!--    });-->
+
+  </script>
+
+</th:block>
+
+
+</html>
