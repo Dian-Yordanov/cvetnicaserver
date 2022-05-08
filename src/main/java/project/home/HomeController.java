@@ -76,19 +76,13 @@ class HomeController {
         return "pages/index";
     }
 
-    @GetMapping("/table")
+    @GetMapping("/jexcel")
     public String indexInput(@ModelAttribute ViewInformationObject viewInformationObject, Model model){
 
 //        System.out.println(viewInformationObject.getId());
 //        System.out.println(viewInformationObject.getContent());
 
-        return "pages/table";
-    }
-
-    @RequestMapping(value = "/tabulator")
-    String tabulator(Model model) throws ClassNotFoundException, IOException {
-
-        return "pages/tabulator";
+        return "pages/jexcel";
     }
 
     @RequestMapping(value = "/xspreadsheet")
