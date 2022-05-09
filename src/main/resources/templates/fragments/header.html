@@ -50,8 +50,6 @@
     }
     .navbar a, .navbar a:active {
         color: #888;
-        font-size: 15px;
-        background: transparent;
     }
     .search-box {
         position: relative;
@@ -165,25 +163,70 @@
             display: block;
         }
     }
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 1;
+    }
+
+    html body {
+      margin-top: 57px;
+    }
+
+    .nav-item-tab a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .nav-item-tab a.active {
+      background-color: dodgerblue;
+      color: white;
+    }
+
     </style>
     <script>
       $(document).on("click", ".navbar-right .dropdown-menu", function(e){
         e.stopPropagation();
     });
+
+    $(document).ready(function() {
+
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("navItemId");
+        var apointers = header.getElementsByClassName("navTab");
+        for (var i = 0; i < apointers.length; i++) {
+          apointers[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+          });
+        }
+
+        $("[href]").each(function() {
+            if (this.href == window.location.href) {
+                $(this).addClass("active");
+            }
+        });
+
+    });
+
+
+
     </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="header">
-    <a href="#" th:href="@{/}" class="navbar-brand">Home</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
+<!--    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-        <div class="navbar-nav">
+        <div id="navItemId" class="navbar-nav nav-item-tab">
 
-            <a href="#" th:href="@{/jexcel}" class="nav-item nav-link"> jexcel</a>
-            <a href="#" th:href="@{/xspreadsheet}" class="nav-item nav-link"> xspreadsheet</a>
+            <a href="#" th:href="@{/jexcel}" class="nav-item nav-link navTab"> jexcel</a>
+            <a href="#" th:href="@{/xspreadsheet}" class="nav-item nav-link navTab"> xspreadsheet</a>
 
         </div>
         <div class="navbar-nav action-buttons ml-auto">
