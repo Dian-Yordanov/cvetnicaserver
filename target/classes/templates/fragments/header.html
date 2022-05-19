@@ -41,22 +41,30 @@
     }
     .navbar .form-inline {
         display: inline-block;
+        z-index: 1;
+    }
+    .navbar  {
+        z-index: 1000 !important;
     }
     .navbar .navbar-nav {
         position: relative;
+        z-index: 1000 !important;
     }
     .navbar a, .navbar a:active {
         color: #888;
         border-radius: 4px;
+        z-index: 1;
     }
     .search-box {
         position: relative;
+        z-index: 1;
     }
     .search-box input {
         padding-right: 35px;
         border-color: #dfe3e8;
         border-radius: 4px !important;
         box-shadow: none
+        z-index: 1;
     }
     .search-box .input-group-text {
         min-width: 35px;
@@ -67,10 +75,12 @@
         z-index: 9;
         padding: 7px;
         height: 100%;
+        z-index: 1;
     }
     .search-box i {
         color: #a0a5b1;
         font-size: 19px;
+        z-index: 1;
     }
     .navbar .btn-primary, .navbar .btn-primary:active {
         color: #fff;
@@ -82,48 +92,60 @@
         border: none;
         min-width: 50px;
         width: 94% !important;
+        z-index: 1;
     }
     .navbar .btn-primary:hover, .navbar .btn-primary:focus {
         color: #fff;
         background: #5765c1 !important;
+        z-index: 1;
     }
     .navbar .action-buttons .dropdown-toggle::after {
         display: none;
+        z-index: 1;
     }
 
     .dropdown-toggle {
       margin-right: 55px !important;
+      z-index: 1;
     }
 
     .search-box .btn span {
         transform: scale(0.9);
         display: inline-block;
+        z-index: 1;
     }
     .navbar .nav-item i {
         font-size: 18px;
+        z-index: 1;
     }
     .navbar .dropdown-item i {
         font-size: 16px;
         min-width: 22px;
+        z-index: 1;
     }
     .navbar .dropdown-menu {
         border-radius: 1px;
         border-color: #e5e5e5;
         box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        z-index: 1;
     }
     .navbar .navbar-nav .dropdown-menu a {
         padding: 8px 20px;
         line-height: normal;
+
     }
     .navbar .navbar-form {
         border: none;
+        z-index: 1;
     }
     .navbar .navbar-form-wrapper {
         padding: 0 15px;
+        z-index: 1;
     }
     .navbar .login-form label {
         color: #888;
         font-weight: normal;
+        z-index: 1;
     }
     .navbar .dropdown-menu.login-form {
         width: 280px;
@@ -131,6 +153,7 @@
         left: auto;
         right: 0;
         font-size: 14px;
+        z-index: 1;
     }
     .navbar .navbar-nav .dropdown-menu.login-form a {
         padding: 0 !important;
@@ -139,9 +162,11 @@
     }
     .navbar .navbar-nav .dropdown-menu.login-form a:hover{
         text-decoration: underline;
+        z-index: 1;
     }
     .navbar .dropdown-menu.login-form .checkbox-inline {
         margin-top: 10px;
+        z-index: 1;
     }
     @media (min-width: 1200px){
         .form-inline .input-group {
@@ -198,6 +223,15 @@
     .form-group {
       margin-right: 22px;
     }
+
+<!--    div:not(#navbar-nav){-->
+<!--        z-index: -1;-->
+<!--    }-->
+
+<!--    .x-spreadsheet-overlayer{-->
+<!--      z-index: -1;-->
+<!--z-index: 1000 !important;-->
+<!--    }-->
 
     </style>
     <script>
@@ -263,7 +297,6 @@
                     <input type="submit" class="btn btn-primary btn-block" value="Login">
                 </form>
             </div>
-            <!--            <a href="#" class="btn btn-primary">Get Started</a>-->
         </div>
     </div>
 </nav>
