@@ -292,64 +292,45 @@
     </script>
 </head>
 <body>
-<nav id="wholeNavbar" class="navbar navbar-expand navbar-light bg-light" th:fragment="header">
-    <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
-    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-        <div id="navItemId" class="navbar-nav nav-item-tab">
+    <nav id="wholeNavbar" class="navbar navbar-expand navbar-light bg-light" th:fragment="header">
+        <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div id="navItemId" class="navbar-nav nav-item-tab">
 
-            <a href="#" th:href="@{/jexcel}" class="nav-item nav-link navTab"> jexcel</a>
-            <a href="#" th:href="@{/xspreadsheet}" class="nav-item nav-link navTab"> xspreadsheet</a>
+                <a href="#" th:href="@{/jexcel}" class="nav-item nav-link navTab"> jexcel</a>
+                <a href="#" th:href="@{/xspreadsheet}" class="nav-item nav-link navTab"> xspreadsheet</a>
 
-        </div>
-        <div class="navbar-nav action-buttons ml-auto">
-            <div class="btn-group">
-                <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
-                <div id="settings-form" class="dropdown-menu settings-form">
-                    <input id="toggle-event" type="checkbox" data-toggle="toggle">
-                    <div id="console-event"></div>
-                </div>
             </div>
-            <div class="btn-group">
-                <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-user"></i></a>
-                <div id="login-form" class="dropdown-menu login-form">
-                    <a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a>
-                    <form action="/examples/actions/confirmation.php" method="post">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" required="required">
-                        </div>
-                        <div class="form-group">
-                            <div class="clearfix">
-                                <label>Password</label>
-                                <a href="#" class="float-right text-muted"><small>Forgot?</small></a>
+            <div class="navbar-nav action-buttons ml-auto">
+                <div class="btn-group">
+                    <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
+                    <div id="settings-form" class="dropdown-menu settings-form">
+                        <input id="toggle-event" type="checkbox" data-toggle="toggle">
+                        <div id="console-event"></div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-user"></i></a>
+                    <div id="login-form" class="dropdown-menu login-form">
+                        <a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a>
+                        <form action="/examples/actions/confirmation.php" method="post">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" required="required">
                             </div>
-                            <input type="password" class="form-control" required="required">
-                        </div>
-                        <input type="submit" class="btn btn-primary btn-block" value="Login">
-                    </form>
+                            <div class="form-group">
+                                <div class="clearfix">
+                                    <label>Password</label>
+                                    <a href="#" class="float-right text-muted"><small>Forgot?</small></a>
+                                </div>
+                                <input type="password" class="form-control" required="required">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block" value="Login">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
-<!-- Navbar -->
-<!--    <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">-->
-<!--        <div class="container">-->
-<!--            <div class="navbar-collapse collapse">-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="#" th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a></li>-->
-<!--                    <li><a href="#" th:href="@{/table}"><span class="glyphicon glyphicon-th"></span> table</a></li>-->
-<!--                    <li><a href="#" th:href="@{/tabulator}"><span class="glyphicon glyphicon-th"></span> tabulator</a></li>-->
-<!--                    <li><a href="#" th:href="@{/xspreadsheet}"><span class="glyphicon glyphicon-th"></span> xspreadsheet</a></li>-->
-
-<!--    &lt;!&ndash;                <li><a href="#" th:href="@{/change-currency-rates}"><span class="glyphicon glyphicon-euro"></span> Change currency rates (admin only)</a></li>&ndash;&gt;-->
-<!--    &lt;!&ndash;                <li><a href="#" th:href="@{/showdata}"><span class="glyphicon glyphicon-gbp"></span> Show currency rates</a></li>&ndash;&gt;-->
-<!--                    <li><a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;/.nav-collapse &ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
-<!-- Compiled and minified JavaScript -->
+    </nav>
 </body>
 </html>
