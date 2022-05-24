@@ -4,15 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Cvetnica</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-
 <!--    <link href="../../static/css/bootstrap4.5.0.cleaned.min.css"-->
 <!--          th:href="@{/css/bootstrap4.5.0.cleaned.min.css}"-->
 <!--          rel="stylesheet" media="screen" />-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/ca3e02c49c.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--    <link href="https://gitcdn.github.io/bootstrap-toggle/4.5.0/css/bootstrap2-toggle.min.css" rel="stylesheet">-->
+<!--    <script src="https://gitcdn.github.io/bootstrap-toggle/4.5.0/js/bootstrap2-toggle.min.js"></script>-->
 
     <style>
     body {
@@ -145,12 +147,12 @@
         padding: 0 15px;
         z-index: 1;
     }
-    .navbar .login-form label {
+    .navbar .login-form label , .settings-form label {
         color: #888;
         font-weight: normal;
         z-index: 1;
     }
-    .navbar .dropdown-menu.login-form {
+    .navbar .dropdown-menu.login-form , .dropdown-menu.settings-form {
         width: 280px;
         padding: 20px;
         left: auto;
@@ -158,16 +160,16 @@
         font-size: 14px;
         z-index: 1;
     }
-    .navbar .navbar-nav .dropdown-menu.login-form a {
+    .navbar .navbar-nav .dropdown-menu.login-form a , .dropdown-menu.settings-form a {
         padding: 0 !important;
         color: #5c6ac4;
         font-weight: normal;
     }
-    .navbar .navbar-nav .dropdown-menu.login-form a:hover{
+    .navbar .navbar-nav .dropdown-menu.login-form a:hover , .dropdown-menu.settings-form a:hover{
         text-decoration: underline;
         z-index: 1;
     }
-    .navbar .dropdown-menu.login-form .checkbox-inline {
+    .navbar .dropdown-menu.login-form .checkbox-inline , .dropdown-menu.settings-form .checkbox-inline {
         margin-top: 10px;
         z-index: 1;
     }
@@ -178,7 +180,7 @@
         }
     }
     @media (max-width: 768px){
-        .navbar .dropdown-menu.login-form {
+        .navbar .dropdown-menu.login-form , .dropdown-menu.settings-form {
             width: 100%;
             padding: 10px 15px;
             background: transparent;
@@ -219,7 +221,7 @@
         box-sizing: content-box;
     }
 
-    .login-form{
+    .login-form , .settings-form {
         margin-right: 33px;
     }
 
@@ -239,12 +241,7 @@
 
     </style>
     <script>
-      $(document).on("click", ".navbar-right .dropdown-menu", function(e){
-        e.stopPropagation();
-    });
-
     $(document).ready(function() {
-
         // Add active class to the current button (highlight it)
         var header = document.getElementById("navItemId");
         var apointers = header.getElementsByClassName("navTab");
@@ -255,26 +252,51 @@
           this.className += " active";
           });
         }
-
         $("[href]").each(function() {
             if (this.href == window.location.href) {
                 $(this).addClass("active");
             }
         });
-
     });
 
+    $(document).on("click", ".navbar-right .dropdown-menu", function(e){
+      e.stopPropagation();
+    });
+
+    function functionToExecute() {
+        document.getElementById("wholeNavbar").className = "navbar navbar-expand navbar-dark bg-dark";
+    }
+
+    $(document).on('click',".dropdown-menu", function(event){
+
+
+    if(event.target.toString() == "[object HTMLDivElement]"){
+        event.preventDefault();
+        console.log("wwwwwwwwwwwwwevent.target");
+        return false;
+    }
+
+
+<!--       return false;-->
+    });
+
+<!--    $(function() {-->
+<!--        $('#toggle-event').change(function() {-->
+<!--          $('#console-event').html('Toggle: ' + $(this).prop('checked'))-->
+<!--        })-->
+<!--    })-->
+
+<!--    $(document).on('click',".dropdown-menu", function(){-->
+<!--        $('.dropdown-menu').collapse('show');-->
+<!--        alert ("Hello world!");-->
+<!--    });-->
 
 
     </script>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-light bg-light" th:fragment="header">
+<nav id="wholeNavbar" class="navbar navbar-expand navbar-light bg-light" th:fragment="header">
     <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
-    <!--    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">-->
-    <!--        <span class="navbar-toggler-icon"></span>-->
-    <!--    </button>-->
-    <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <div id="navItemId" class="navbar-nav nav-item-tab">
 
@@ -283,23 +305,32 @@
 
         </div>
         <div class="navbar-nav action-buttons ml-auto">
-            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-regular fa-user"></i></a>
-            <div class="dropdown-menu login-form">
-                <a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a>
-                <form action="/examples/actions/confirmation.php" method="post">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" required="required">
-                    </div>
-                    <div class="form-group">
-                        <div class="clearfix">
-                            <label>Password</label>
-                            <a href="#" class="float-right text-muted"><small>Forgot?</small></a>
+            <div class="btn-group">
+                <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
+                <div id="settings-form" class="dropdown-menu settings-form">
+                    <input id="toggle-event" type="checkbox" data-toggle="toggle">
+                    <div id="console-event"></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-user"></i></a>
+                <div id="login-form" class="dropdown-menu login-form">
+                    <a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a>
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" required="required">
                         </div>
-                        <input type="password" class="form-control" required="required">
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-block" value="Login">
-                </form>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                                <a href="#" class="float-right text-muted"><small>Forgot?</small></a>
+                            </div>
+                            <input type="password" class="form-control" required="required">
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-block" value="Login">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
