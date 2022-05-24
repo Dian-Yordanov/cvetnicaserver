@@ -269,15 +269,12 @@
 
     $(document).on('click',".dropdown-menu", function(event){
 
-
     if(event.target.toString() == "[object HTMLDivElement]"){
         event.preventDefault();
-        console.log("wwwwwwwwwwwwwevent.target");
+        console.log(event.target.toString());
         return false;
     }
 
-
-<!--       return false;-->
     });
 
 <!--    $(function() {-->
