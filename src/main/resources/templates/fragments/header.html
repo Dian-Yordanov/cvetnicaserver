@@ -36,6 +36,8 @@
         padding-right: 16px;
         border-bottom: 1px solid #dfe3e8;
         border-radius: 0;
+        position: sticky;
+        top: 0;
     }
     .nav-link img {
         border-radius: 50%;
@@ -301,7 +303,7 @@
     $(document).on('click',".dropdown-menu", function(event){
         if(event.target.toString() == "[object HTMLDivElement]"){
             event.preventDefault();
-            console.log(event.target.toString());
+<!--            console.log(event.target.toString());-->
             return false;
         }
     });
@@ -309,7 +311,7 @@
     $(document).on('click',".checkbox-specific-css-container", function(event){
         if(event.target.toString() == "[object HTMLLabelElement]"){
             event.preventDefault();
-            console.log(event.target.toString());
+<!--            console.log(event.target.toString());-->
             return false;
         }
     });
@@ -354,7 +356,7 @@
                     <div id="settings-form" class="dropdown-menu settings-form">
                         <div class="checkbox-specific-css-container">
                             <div class="form-check pl-0">
-                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" onchange="toggleCheckbox(this)" checked>
+                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" onchange="toggleCheckbox(this)" unchecked>
                                 <label for="stackedCheck1" class="form-check-label">Enabled</label>
                             </div>
                         </div>
