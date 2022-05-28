@@ -13,6 +13,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+<!--    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">-->
+<!--    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>-->
+
 <!--    <link href="https://gitcdn.github.io/bootstrap-toggle/4.5.0/css/bootstrap2-toggle.min.css" rel="stylesheet">-->
 <!--    <script src="https://gitcdn.github.io/bootstrap-toggle/4.5.0/js/bootstrap2-toggle.min.js"></script>-->
 
@@ -87,18 +93,45 @@
         font-size: 19px;
         z-index: 1;
     }
-    .navbar .btn-primary, .navbar .btn-primary:active {
+    .navbar .btn-primary, .navbar .btn-primary:active  {
         color: #fff;
         background: #5c6ac4 !important;
+
+<!--        border: none;-->
+        border-radius: 4px;
+        border-color: #5c6ac4 !important;
+    }
+
+    .fixed-width-container {
+        z-index: 1;
+        min-width: 50px;
+        width: 93% !important;
         padding-top: 8px;
         padding-bottom: 6px;
-        border-radius: 4px;
         vertical-align: middle;
-        border: none;
-        min-width: 50px;
-        width: 94% !important;
-        z-index: 1;
     }
+
+   .toggle-group{
+        pointer-events: none;
+    }
+
+<!--    .checkbox-specific-css-container {-->
+<!--        all: unset;-->
+<!--    }-->
+
+<!--    .btn-primary {-->
+<!--        color: #fff;-->
+<!--        background: #5c6ac4 !important;-->
+<!--        padding-top: 8px;-->
+<!--        padding-bottom: 6px;-->
+<!--        border-radius: 4px;-->
+<!--        vertical-align: middle;-->
+<!--        border: none;-->
+<!--        min-width: 50px;-->
+<!--        width: 94% !important;-->
+<!--        z-index: 1;-->
+<!--    }-->
+
     .navbar .btn-primary:hover, .navbar .btn-primary:focus {
         color: #fff;
         background: #5765c1 !important;
@@ -147,7 +180,7 @@
         padding: 0 15px;
         z-index: 1;
     }
-    .navbar .login-form label , .settings-form label {
+    .navbar .login-form label , .settings-form label , .btn-primary:not{
         color: #888;
         font-weight: normal;
         z-index: 1;
@@ -173,12 +206,14 @@
         margin-top: 10px;
         z-index: 1;
     }
+
     @media (min-width: 1200px){
         .form-inline .input-group {
             width: 300px;
             margin-left: 30px;
         }
     }
+
     @media (max-width: 768px){
         .navbar .dropdown-menu.login-form , .dropdown-menu.settings-form {
             width: 100%;
@@ -196,15 +231,12 @@
             display: block;
         }
     }
+
     nav.navbar.navbar-expand-lg.navbar-light.bg-light {
             position: fixed;
             top: 0px;
             width: 100%;
             z-index: 1;
-    }
-
-    html body {
-<!--      margin-top: 57px;-->
     }
 
     .nav-item-tab a:hover {
@@ -213,7 +245,7 @@
     }
 
     .nav-item-tab a.active {
-      background-color: dodgerblue;
+      background: #5c6ac4 !important;
       color: white;
     }
 
@@ -222,13 +254,12 @@
     }
 
     .login-form , .settings-form {
-        margin-right: 33px;
+<!--        margin-right: 33px;-->
     }
 
     .form-group {
       margin-right: 22px;
     }
-
 
 <!--    div:not(#navbar-nav){-->
 <!--        z-index: -1;-->
@@ -236,7 +267,7 @@
 
 <!--    .x-spreadsheet-overlayer{-->
 <!--      z-index: -1;-->
-<!--z-index: 1000 !important;-->
+<!--      z-index: 1000 !important;-->
 <!--    }-->
 
     </style>
@@ -268,13 +299,19 @@
     }
 
     $(document).on('click',".dropdown-menu", function(event){
+        if(event.target.toString() == "[object HTMLDivElement]"){
+            event.preventDefault();
+            console.log(event.target.toString());
+            return false;
+        }
+    });
 
-    if(event.target.toString() == "[object HTMLDivElement]"){
-        event.preventDefault();
-        console.log(event.target.toString());
-        return false;
-    }
-
+    $(document).on('click',".checkbox-specific-css-container", function(event){
+        if(event.target.toString() == "[object HTMLLabelElement]"){
+            event.preventDefault();
+            console.log(event.target.toString());
+            return false;
+        }
     });
 
 <!--    $(function() {-->
@@ -305,8 +342,12 @@
                 <div class="btn-group">
                     <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
                     <div id="settings-form" class="dropdown-menu settings-form">
-                        <input id="toggle-event" type="checkbox" data-toggle="toggle">
-                        <div id="console-event"></div>
+                        <div class="checkbox-specific-css-container">
+                            <div class="form-check pl-0">
+                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" checked>
+                                <label for="stackedCheck1" class="form-check-label">Enabled</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -325,7 +366,9 @@
                                 </div>
                                 <input type="password" class="form-control" required="required">
                             </div>
-                            <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            <div class="fixed-width-container">
+                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            </div>
                         </form>
                     </div>
                 </div>
