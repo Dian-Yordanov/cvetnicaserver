@@ -314,6 +314,19 @@
         }
     });
 
+    function toggleCheckbox(element)
+    {
+        if(element.checked){
+            console.log("checked");
+            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-dark bg-dark');
+        }
+        else{
+            console.log("not checked");
+            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-light bg-light');
+        }
+        console.log(element);
+    }
+
 <!--    $(function() {-->
 <!--        $('#toggle-event').change(function() {-->
 <!--          $('#console-event').html('Toggle: ' + $(this).prop('checked'))-->
@@ -333,10 +346,8 @@
         <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div id="navItemId" class="navbar-nav nav-item-tab">
-
                 <a href="#" th:href="@{/jexcel}" class="nav-item nav-link navTab"> jexcel</a>
                 <a href="#" th:href="@{/xspreadsheet}" class="nav-item nav-link navTab"> xspreadsheet</a>
-
             </div>
             <div class="navbar-nav action-buttons ml-auto">
                 <div class="btn-group">
@@ -344,7 +355,7 @@
                     <div id="settings-form" class="dropdown-menu settings-form">
                         <div class="checkbox-specific-css-container">
                             <div class="form-check pl-0">
-                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" checked>
+                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" onchange="toggleCheckbox(this)" checked>
                                 <label for="stackedCheck1" class="form-check-label">Enabled</label>
                             </div>
                         </div>
