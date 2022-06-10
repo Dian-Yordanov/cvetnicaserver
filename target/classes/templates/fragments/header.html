@@ -234,12 +234,12 @@
         }
     }
 
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light {
-            position: fixed;
-            top: 0px;
-            width: 100%;
-            z-index: 1;
-    }
+<!--    nav.navbar.navbar-expand-lg.navbar-light.bg-light {-->
+<!--            position: fixed;-->
+<!--            top: 0px;-->
+<!--            width: 100%;-->
+<!--            z-index: 1;-->
+<!--    }-->
 
     .nav-item-tab a:hover {
       background-color: #ddd;
@@ -297,7 +297,7 @@
     });
 
     function functionToExecute() {
-        document.getElementById("wholeNavbar").className = "navbar navbar-expand navbar-dark bg-dark";
+        document.getElementById("wholeNavbar").className = "navbar navbar-expand navbar-expand-lg navbar-dark bg-dark";
     }
 
     $(document).on('click',".dropdown-menu", function(event){
@@ -320,11 +320,11 @@
     {
         if(element.checked){
             console.log("checked");
-            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-dark bg-dark');
+            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-expand-lg navbar-dark bg-dark');
         }
         else{
             console.log("not checked");
-            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-light bg-light');
+            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-expand-lg navbar-light bg-light');
         }
     }
 
@@ -343,8 +343,16 @@
     </script>
 </head>
 <body>
-    <nav id="wholeNavbar" class="navbar navbar-expand navbar-light bg-light" th:fragment="header">
+    <nav id="wholeNavbar" class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="header">
         <a href="#" th:href="@{/}" class="navbar-brand nav-item-tab">Home</a>
+
+        <button type="button" data-toggle="collapse"
+                data-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i>
+        </button>
+
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div id="navItemId" class="navbar-nav nav-item-tab">
                 <a href="#" th:href="@{/jexcel}" class="nav-item nav-link navTab"> jexcel</a>
