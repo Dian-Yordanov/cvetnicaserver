@@ -117,6 +117,11 @@
         pointer-events: none;
     }
 
+   .toggle.btn {
+        min-width: 8rem !important;
+        min-height: 1.5rem !important;
+   }
+
 <!--    .checkbox-specific-css-container {-->
 <!--        all: unset;-->
 <!--    }-->
@@ -187,8 +192,15 @@
         font-weight: normal;
         z-index: 1;
     }
-    .navbar .dropdown-menu.login-form , .dropdown-menu.settings-form {
+    .navbar .dropdown-menu.login-form {
         width: 280px;
+        padding: 20px;
+        left: auto;
+        right: 0;
+        font-size: 14px;
+        z-index: 1;
+    }
+    .navbar .dropdown-menu.settings-form {
         padding: 20px;
         left: auto;
         right: 0;
@@ -292,10 +304,6 @@
         });
     });
 
-    $(document).on("click", ".navbar-right .dropdown-menu", function(e){
-      e.stopPropagation();
-    });
-
     function functionToExecute() {
         document.getElementById("wholeNavbar").className = "navbar navbar-expand navbar-expand-lg navbar-dark bg-dark";
     }
@@ -303,7 +311,6 @@
     $(document).on('click',".dropdown-menu", function(event){
         if(event.target.toString() == "[object HTMLDivElement]"){
             event.preventDefault();
-<!--            console.log(event.target.toString());-->
             return false;
         }
     });
@@ -311,28 +318,112 @@
     $(document).on('click',".checkbox-specific-css-container", function(event){
         if(event.target.toString() == "[object HTMLLabelElement]"){
             event.preventDefault();
-<!--            console.log(event.target.toString());-->
             return false;
         }
     });
 
-    function toggleCheckbox(element)
-    {
-        if(element.checked){
-            console.log("checked");
-            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-expand-lg navbar-dark bg-dark');
+    $(document).on('click',".checkbox-specific-css-container", function(event){
+        if(event.target.toString() == "[object HTMLDivElement]"){
+            event.preventDefault();
+            return false;
         }
         else{
-            console.log("not checked");
-            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand navbar-expand-lg navbar-light bg-light');
+<!--        [object HTMLDivElement]-->
+            console.log(event.target.toString());
         }
-    }
+    });
 
-<!--    $(function() {-->
-<!--        $('#toggle-event').change(function() {-->
-<!--          $('#console-event').html('Toggle: ' + $(this).prop('checked'))-->
-<!--        })-->
-<!--    })-->
+    <!--THIS IS FOR THE CLICK: https://stackoverflow.com/questions/25089297/avoid-dropdown-menu-close-on-click-inside -->
+<!--    $(document)-->
+<!--        .on('click.bs.dropdown.data-api', clearMenus)-->
+<!--.on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })-->
+<!--.on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)-->
+<!--.on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)-->
+<!--.on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown);-->
+
+<!--    $(document).on("click", ".navbar-right .dropdown-menu", function(e){-->
+<!--      e.stopPropagation();-->
+<!--    });-->
+
+<!--    $(document).on("click", ".dropdown .form-check-input", function(e){-->
+<!--      e.stopPropagation();-->
+<!--    });-->
+
+<!--    $('.dropdown-menu').on("click.bs.dropdown", function (e) {-->
+<!--        e.stopPropagation();-->
+<!--        e.preventDefault();-->
+<!--    });-->
+
+<!--    $(document).on('click.bs.dropdown.data-api', '.dropdown .keep-open-on-click', (event) => {-->
+<!--        event.stopPropagation();-->
+<!--    });-->
+
+<!--    $(document).ready(function() {-->
+<!--        $("#stackedCheck1").click(function() {-->
+<!--            var checkBoxes = $("input[name=recipients\\[\\]]");-->
+<!--            checkBoxes.prop("checked", !checkBoxes.prop("checked"));-->
+<!--            console.log('#someButton was clicked');-->
+<!--        });-->
+<!--    });-->
+
+<!--    $('document').on("#form-check-input", function (e) {-->
+<!--        alert( e.value );-->
+<!--    });-->
+
+<!--    $(document).ready(function() {-->
+<!--        $('#form-check-input').on('change', function() {-->
+<!--           alert( this.value );-->
+<!--        });-->
+
+<!--        $('#form-check-input').change(function() {-->
+<!--            console.log('#someButton was clicked');-->
+<!--        });-->
+<!--    });-->
+
+     $(document).ready(function() {
+        $('#form-check-input').on('change', function(e) {
+           e.stopPropagation();
+           if(e.target.checked){
+               console.log("checked");
+               document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand-lg navbar-dark bg-dark');
+               document.getElementById('settings-form').setAttribute('class', 'dropdown-menu settings-form bg-dark');
+               document.getElementById('login-form').setAttribute('class', 'dropdown-menu login-form bg-dark');
+               document.getElementById('button-for-settings-form').click();
+           }
+           else{
+               console.log("not checked");
+               document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand-lg navbar-light bg-light');
+               document.getElementById('settings-form').setAttribute('class', 'dropdown-menu settings-form bg-light');
+               document.getElementById('login-form').setAttribute('class', 'dropdown-menu login-form bg-light');
+               document.getElementById('button-for-settings-form').click();
+            }
+        });
+    });
+
+
+
+
+<!--    function toggleCheckbox(element)-->
+<!--    {-->
+<!--        if(element.checked){-->
+<!--            console.log("checked");-->
+<!--            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand-lg navbar-dark bg-dark');-->
+<!--            document.getElementById('settings-form').setAttribute('class', 'dropdown-menu settings-form bg-dark');-->
+<!--            document.getElementById('login-form').setAttribute('class', 'dropdown-menu login-form bg-dark');-->
+<!--        }-->
+<!--        else{-->
+<!--            console.log("not checked");-->
+<!--            document.getElementById('wholeNavbar').setAttribute('class', 'navbar navbar-expand-lg navbar-light bg-light');-->
+<!--            document.getElementById('settings-form').setAttribute('class', 'dropdown-menu settings-form bg-light');-->
+<!--            document.getElementById('login-form').setAttribute('class', 'dropdown-menu login-form bg-light');-->
+<!--        }-->
+<!--    }-->
+
+    $(function() {
+        $('#toggle-event').change(function() {
+          $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+        })
+    })
 
 <!--    $(document).on('click',".dropdown-menu", function(){-->
 <!--        $('.dropdown-menu').collapse('show');-->
@@ -360,19 +451,21 @@
             </div>
             <div class="navbar-nav action-buttons ml-auto">
                 <div class="btn-group">
-                    <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
-                    <div id="settings-form" class="dropdown-menu settings-form">
+                    <a id="button-for-settings-form" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-sliders"></i></a>
+                    <div id="settings-form" class="dropdown-menu settings-form bg-light">
                         <div class="checkbox-specific-css-container">
                             <div class="form-check pl-0">
-                                <input id="stackedCheck1" class="form-check-input" type="checkbox" data-toggle="toggle" onchange="toggleCheckbox(this)" unchecked>
-                                <label for="stackedCheck1" class="form-check-label">Enabled</label>
+                                <form class="dropdown">
+                                    <label class="form-check-label">Theme: </label>
+                                    <input id="form-check-input" class="form-check-input" type="checkbox" data-toggle="toggle" unchecked data-on="Dark" data-off="Light">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="btn-group">
                     <a data-toggle="dropdown" class="nav-item nav-link dropdown-toggle mr-3"><i class="fa-solid fa-user"></i></a>
-                    <div id="login-form" class="dropdown-menu login-form">
+                    <div id="login-form" class="dropdown-menu login-form bg-light">
                         <a href="#" th:href="@{/security/user_page}"><span class="glyphicon glyphicon-user"></span> Logged user: <span sec:authentication="name"></span></a>
                         <form action="/examples/actions/confirmation.php" method="post">
                             <div class="form-group">
